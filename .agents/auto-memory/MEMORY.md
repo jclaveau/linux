@@ -1,0 +1,4 @@
+- [bcm2835-codec EOS-before-STREAMON fix + PR #7733](project_bcm2835_codec_eos_pr.md) — cause, fix, spec deviation, upstream state (1 commit a17df81), pending frame-loss follow-up
+- [Iterate on the fork, not upstream](feedback_upstream_iteration_on_fork.md) — WIP on fork draft PR; upstream gets only the final squashed commit + short summary (pelwell pushback)
+- [checkpatch-action rejects Assisted-by](reference_checkpatch_action_assisted_by.md) — advisory CI false positive; tree's checkpatch.pl accepts it
+- [Fork CI](reference_fork_ci.md) — enable click, triggers, upstream action_required, 7-defconfig build
