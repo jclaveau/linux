@@ -20,6 +20,7 @@ metadata:
 **Pending follow-up (separate PR, not #7733):**
 - Normal drain loses frames on stock driver too: STREAMON → QBUF×3 → STOP yields 0–1 of 3 (EOS submitted while frames still wait in the m2m queue).
 - Frames queued before STREAMON then STOP are dropped by the held EOS (variant "B" — send the EOS from `device_run()` once no source buffer is ready — fixes it, 3/3).
+**Impact measured 2026-11-02: LOW.** ffmpeg 5.1 and jellyfin-ffmpeg 7.1 h264_v4l2m2m encodes of 1/2/3/4/5/8/48/240 frames (×3 each) kept ALL frames (ffprobe -count_frames). ffmpeg feeds frames lock-step, so none are left in the m2m queue at STOP; the loss needs a raw V4L2 client that queues a burst and STOPs at once. Park unless someone reports it.
 Bench tooling (drain-test.c V4L2 client, variant bench script) lives in jean's nas repo `bcm2835-codec-eosfix/`.
 
 Related: [[reference_checkpatch_action_assisted_by]], [[reference_fork_ci]]
